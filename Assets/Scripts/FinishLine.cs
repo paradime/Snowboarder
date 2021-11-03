@@ -7,10 +7,12 @@ public class FinishLine : LevelManager
 {
     [SerializeField]
     ParticleSystem finishEffect;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
+            GetComponent<AudioSource>().Play();
             finishEffect.Play();
             Invoke("RestartScene", restartDelay);
         }
